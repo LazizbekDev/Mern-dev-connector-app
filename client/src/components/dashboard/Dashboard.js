@@ -5,10 +5,11 @@ import { getCurrentProfile } from "../../actions/profile";
 import { connect } from "react-redux";
 import {BackdropLoader} from "../layout/Spinner";
 import {Link} from "react-router-dom";
-import {BiRefresh} from "react-icons/all";
 import DashboardActions from "./DashboardActions";
 import Experiences from "./Experiences";
 import Education from "./Education";
+import {Snackbar} from "@mui/material";
+
 
 const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, loading } }) => {
 
@@ -37,14 +38,16 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
                                 If i'm not mistaken you don't have profile yet.
                                 <Link to='/create-profile'>
                                     <Button>Create</Button>
-                                </Link> Your Profile. If you have a profile but not showing in here
-                                <Button onClick={() => window.location.reload()}>
-                                    <BiRefresh size={'1.40rem'} /> refresh this page
-                                </Button>
+                                </Link> Your Profile.
                             </Typography>
                         </>
                     )}
                 </div>
+                <Snackbar
+                    open={true}
+                    autoHideDuration={5000}
+                    message={"Now you are using alpha version! and we have a lot of problems"}
+                />
             </Container>
         </ThemeProvider>
     );

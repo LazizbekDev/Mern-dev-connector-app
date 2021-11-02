@@ -135,8 +135,9 @@ const CreateProfile = ({ createProfile, history }) => {
                     onChange={(e) => changeValue(e)}
                     sx={{mt: 3}}
                     value={skills}
+                    placeholder='ex: js, py, C#'
                 />
-                <FormHelperText>Enter the programming languages and technologies you know</FormHelperText>
+                <FormHelperText>Enter the programming languages and technologies you know. Separate with a comma</FormHelperText>
 
                 <TextField
                     label="Github username"
@@ -144,7 +145,9 @@ const CreateProfile = ({ createProfile, history }) => {
                     onChange={(e) => changeValue(e)}
                     variant="standard" sx={{mt: 3}}
                     value={githubusername}
+                    placeholder='ex: LazizbekDev'
                 />
+                <FormHelperText>Only user name. Not url</FormHelperText>
 
                 <TextField
                     label="Bio"
