@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import {addEducation} from "../../actions/profile";
 import { FcApproval } from "react-icons/all";
+import {DatePicker, LocalizationProvider} from "@mui/lab";
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import { withRouter } from "react-router-dom";
 import {
     Button, Checkbox,
@@ -40,13 +42,13 @@ const AddEducation = ({ addEducation, history }) => {
             [e.target.name]: e.target.value,
         })
     }
-    // const changeDate = (name,e) => {
-    //     setFormData({
-    //         ...formData,
-    //         [name]: e
-    //     })
-    //     console.log(e)
-    // }
+    const changeDate = (name,e) => {
+        setFormData({
+            ...formData,
+            [name]: e
+        })
+        console.log(e)
+    }
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -92,7 +94,7 @@ const AddEducation = ({ addEducation, history }) => {
                 />
                 <FormHelperText>Field of study</FormHelperText>
 
-                {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <DatePicker
                         label="From education date"
                         onChange={(e) => changeDate('from', e)}
@@ -106,17 +108,7 @@ const AddEducation = ({ addEducation, history }) => {
                                 {...params} />
                         )}
                     />
-                </LocalizationProvider> */}
-                <TextField
-                    type="date"
-                    label="From date"
-                    variant="standard"
-                    name={'from'}
-                    onChange={(e) => changeValue(e)}
-                    sx={{mt: 3}}
-                    value={from}
-                    required
-                />
+                </LocalizationProvider>
 
                 <FormControlLabel sx={{mt: 3}} control={
                     <Checkbox
@@ -132,30 +124,21 @@ const AddEducation = ({ addEducation, history }) => {
                 } label="i'm Student" style={{userSelect: 'none'}} />
 
                 {!current && (
-                    // <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    //     <DatePicker
-                    //         label="To date"
-                    //         onChange={(e) => changeDate('to', e)}
-                    //         value={!current && to}
-                    //         maxDate={new Date()}
-                    //         minDate={from}
-                    //         renderInput={(params) => (
-                    //             <TextField
-                    //                 variant="standard"
-                    //                 sx={{mt: 3}}
-                    //                 {...params} />
-                    //         )}
-                    //     />
-                    // </LocalizationProvider>
-                    <TextField
-                        type="date"
-                        label="To date"
-                        variant="standard"
-                        name={'to'}
-                        onChange={(e) => changeValue(e)}
-                        sx={{mt: 3}}
-                        value={to}
-                    />
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <DatePicker
+                            label="To date"
+                            onChange={(e) => changeDate('to', e)}
+                            value={!current && to}
+                            maxDate={new Date()}
+                            minDate={from}
+                            renderInput={(params) => (
+                                <TextField
+                                    variant="standard"
+                                    sx={{mt: 3}}
+                                    {...params} />
+                            )}
+                        />
+                    </LocalizationProvider>
                 )}
 
                 <TextField
