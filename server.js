@@ -21,6 +21,8 @@ app.use('/api/auth', auth)
 app.use('/api/profile', profile)
 app.use('/api/users', users)
 
+const __dirname = path.resolve()
+
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'))
 
