@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import {addEducation} from "../../actions/profile";
 import { FcApproval } from "react-icons/all";
-import {DatePicker, LocalizationProvider, AdapterDateFns} from "@mui/lab";
+import {DatePicker, LocalizationProvider} from "@mui/lab";
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import { withRouter } from "react-router-dom";
 import {
     Button, Checkbox,
