@@ -84,7 +84,15 @@ const Register = ({setAlert, register, isAuthenticated}) => {
                             label="Email Address"
                             type={'email'}
                             variant="outlined"
-                            helperText="If you want a profile image, use a GRavatar email"
+                            helperText={<>
+                                If you want a profile image, use a {' '}
+                                <a 
+                                    style={{textDecoration: 'underline', color: 'lightblue'}}
+                                    href='https://gravatar.com/' 
+                                    target='_blank' rel='noreferrer'
+                                    className='link'
+                                    >GRavatar</a> email
+                            </>}
                             className={'input-form'}
                             name={'email'}
                             value={email}
