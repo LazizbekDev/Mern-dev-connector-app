@@ -1,0 +1,7 @@
+{
+    "mongoURI": "mongodb+srv://Lazizbek:lazizbek@developers-community.j8ghc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "jwtSecret": "mysecrettoken",
+    "githubClientId": "ee3ae19ea031d4c02dea",
+    "githubSecret": "bfea64b5551250381232758d486975d4aa060ad3",
+    "githubToken": "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"
+}
