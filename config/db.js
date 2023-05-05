@@ -1,11 +1,8 @@
 import mongoose from 'mongoose'
-import config from 'config'
-
-const db = config.get('mongoURI')
 
 const mongooseConnect = async () => {
     try {
-        await mongoose.connect(db, {
+        await mongoose.connect(process.env.mongoURI, {
             useNewUrlParser: true,
         })
         console.log('connected to mongoDB')

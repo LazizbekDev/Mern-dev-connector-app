@@ -1,4 +1,5 @@
 import express from 'express'
+import { config } from 'dotenv';
 import mongooseConnect from "./config/db.js";
 import posts from './routes/api/posts.js'
 import auth from './routes/api/auth.js'
@@ -8,6 +9,7 @@ import path from 'path'
 
 //express ad app
 const app = express()
+config();
 
 //connect mongoDB
 mongooseConnect().then(r => console.log('it is awesome :-)'))
@@ -15,6 +17,7 @@ mongooseConnect().then(r => console.log('it is awesome :-)'))
 // middleware with express
 
 app.use(express.json())
+app.use(express.urlencoded({extended: true}));
 
 app.use('/api/posts', posts)
 app.use('/api/auth', auth)

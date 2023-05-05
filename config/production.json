@@ -1,7 +1,7 @@
 {
-    "mongoURI": "********************",
-    "jwtSecret": "********************",
-    "githubClientId": "********************",
-    "githubSecret": "********************",
-    "githubToken": "********************"
-  }
+  "mongoURI": "",
+  "jwtSecret": "",
+  "githubClientId": "",
+  "githubSecret": "",
+  "githubToken": ""
+}
