@@ -8,7 +8,6 @@ import {Link} from "react-router-dom";
 import DashboardActions from "./DashboardActions";
 import Experiences from "./Experiences";
 import Education from "./Education";
-import {Snackbar} from "@mui/material";
 
 
 const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, loading } }) => {
@@ -43,11 +42,7 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
                         </>
                     )}
                 </div>
-                <Snackbar
-                    open={true}
-                    autoHideDuration={5000}
-                    message={"Now you are using alpha version! and we have a lot of problems"}
-                />
+                <footer className={'ad'}>Hey developer. Website developed by <a href={'https://lazizbe.uz'}>Lazizbek</a>, pls text me</footer>
             </Container>
         </ThemeProvider>
     );

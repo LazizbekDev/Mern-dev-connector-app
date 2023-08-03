@@ -57,3 +57,22 @@ a {
   width: 100%;
   padding: 0.3rem .9rem;
 }
+
+@font-face {
+  src: url("https://artict.netlify.app/assets/ArameThin-e6836bd8.ttf");
+  font-family: arame;
+}
+
+.ad {
+  position: fixed;
+  color: #9d9a9a;
+  font-family: arame, monospace;
+  font-size: 13px;
+  right: 19px;
+  bottom: 1.6rem;
+}
+
+.ad a {
+  color: #ccd3d3;
+  text-decoration: underline;
+}
