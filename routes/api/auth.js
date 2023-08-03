@@ -3,7 +3,7 @@ import auth from '../../middleware/auth.js';
 import {check, validationResult} from "express-validator";
 import Users from "../../models/User.js";
 import jwt from 'jsonwebtoken'
-import config from "config";
+import "config";
 
 const router = express.Router();
 
