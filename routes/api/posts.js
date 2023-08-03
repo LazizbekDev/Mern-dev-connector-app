@@ -4,7 +4,6 @@ import {check, validationResult} from "express-validator";
 import User from "../../models/User.js";
 import Posts from "../../models/Posts.js";
 
-
 const router = express.Router();
 
 router.post(
@@ -20,7 +19,9 @@ router.post(
     async (req, res) =>
     {
         const errors = validationResult(req)
-        if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() })
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() })
+        }
 
         try {
             const user = await User.findById(req.user.id).select('-password')
@@ -34,10 +35,10 @@ router.post(
 
             const post = await newPost.save()
 
-            res.json(post)
+            return res.json(post)
         } catch (err) {
             console.log(err.message)
-            res.status(500).json({ msg: err.message })
+            return res.status(500).json({ msg: err.message })
         }
     }
 )
@@ -45,10 +46,10 @@ router.post(
 router.get('/', auth, async (req, res) => {
     try {
         const posts = await Posts.find().sort({ date: -1 })
-        res.json(posts)
+        return res.json(posts)
     } catch (err) {
         console.log(err.message)
-        res.status(500).json({ msg: err.message })
+        return res.status(500).json({ msg: err.message })
     }
 })
 
@@ -58,11 +59,11 @@ router.get('/:id', auth, async (req, res) => {
 
         !post && res.status(404).json({ msg: "Post not found" })
 
-        res.json(post)
+        return res.json(post)
     } catch (err) {
         console.log(err.message)
         err.kind === 'ObjectId'  && res.status(404).json({ msg: "Post not found" })
-        res.status(500).json({ msg: err.message })
+        return res.status(500).json({ msg: err.message })
     }
 })
 
@@ -76,11 +77,11 @@ router.delete('/:id', auth, async (req, res) => {
 
         await post.remove()
 
-        res.json({ msg: 'Post deleted' })
+        return res.json({ msg: 'Post deleted' })
     } catch (err) {
         console.log(err.message)
         err.kind === 'ObjectId'  && res.status(404).json({ msg: "Post not found" })
-        res.status(500).json({ msg: err.message })
+        return res.status(500).json({ msg: err.message })
     }
 })
 
@@ -96,11 +97,10 @@ router.put('/like/:id', auth, async (req, res) => {
 
         await post.save()
 
-        res.json(post.likes)
+        return res.json(post.likes)
 
     } catch (err) {
-        console.log(err.message)
-        res.status(500).json({ msg: err.message })
+        return res.status(500).json({ msg: err.message })
     }
 })
 router.put('/unlike/:id', auth, async (req, res) => {
@@ -117,11 +117,10 @@ router.put('/unlike/:id', auth, async (req, res) => {
 
         await post.save()
 
-        res.json(post.likes)
+        return res.json(post.likes)
 
     } catch (err) {
-        console.log(err.message)
-        res.status(500).json({ msg: err.message })
+        return res.status(500).json({ msg: err.message })
     }
 })
 
@@ -138,7 +137,9 @@ router.post(
     async (req, res) =>
     {
         const errors = validationResult(req)
-        if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() })
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() })
+        }
 
         try {
             const user = await User.findById(req.user.id).select('-password')
@@ -155,10 +156,9 @@ router.post(
 
             await post.save()
 
-            res.json(post.comments)
+            return res.json(post.comments)
         } catch (err) {
-            console.log(err.message)
-            res.status(500).json({ msg: err.message })
+            return res.status(500).json({ msg: err.message })
         }
     }
 )
@@ -186,11 +186,10 @@ router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
 
         await post.save()
 
-        res.json(post.comments)
+        return res.json(post.comments)
 
     } catch (err) {
-        console.log(err.message)
-        res.status(500).json({ msg: err.message })
+        return res.status(500).json({ msg: err.message })
     }
 })
 

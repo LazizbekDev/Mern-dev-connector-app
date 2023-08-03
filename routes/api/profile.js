@@ -3,10 +3,9 @@ import auth from '../../middleware/auth.js'
 import Profile from '../../models/Profile.js'
 import Users from "../../models/User.js";
 import {check, validationResult} from "express-validator";
-import request from "request"
-import config from "config"
 import Posts from "../../models/Posts.js";
 import axios from "axios";
+import "config"
 
 const router = express.Router();
 
