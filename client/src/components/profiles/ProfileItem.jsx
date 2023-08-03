@@ -34,8 +34,8 @@ const ProfileItem = ({ profile: {
                 </TableCell>
                 <TableCell>
                     <Typography variant={'overline'}>
-                        {skills.slice(0,4).map(skill => (
-                            <div>
+                        {skills.slice(0,4).map((skill, i) => (
+                            <div key={i}>
                                 <BiListCheck/> {skill}
                             </div>
                         ))}
