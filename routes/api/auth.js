@@ -10,10 +10,9 @@ const router = express.Router();
 router.get('/', auth, async (req, res) => {
     try {
         const user = await Users.findById(req.user.id).select('-password');
-        res.json(user)
+        return res.json(user)
     } catch (err) {
-        console.log(err.message)
-        res.status(500).send('Server error')
+        return res.status(500).send('Server error')
     }
 })
 
@@ -38,7 +37,7 @@ router.post('/', [
     try {
         let user = await Users.findOne({ email })
         if (!user) {
-            res
+            return res
                 .status(400)
                 .send({
                     errors: [
@@ -50,7 +49,7 @@ router.post('/', [
         const isMatch = await password === user.password
 
         if (!isMatch) {
-            res
+            return res
                 .status(400)
                 .send({
                     errors: [
@@ -71,12 +70,11 @@ router.post('/', [
             { expiresIn: 360000 },
             (err, token) => {
                 if (err) throw new Error(err)
-                res.json({ token })
+                return res.json({ token })
             }
         )
     } catch (err) {
-        console.log(err.message)
-        res.status(500).send(err.message)
+        return res.status(500).send(err.message)
     }
 })
 
