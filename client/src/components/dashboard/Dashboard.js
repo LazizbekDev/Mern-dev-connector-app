@@ -42,7 +42,7 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
                         </>
                     )}
                 </div>
-                <footer className={'ad'}>Hey developer. Website developed by <a href={'https://lazizbe.uz'}>Lazizbek</a>, pls text me</footer>
+                <footer className={'ad'}>Hey developer. Website developed by <a target={'_blank'} href={'https://lazizbe.uz'}>Lazizbek</a>, pls text me</footer>
             </Container>
         </ThemeProvider>
     );
