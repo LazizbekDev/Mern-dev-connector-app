@@ -3,7 +3,6 @@ import {check, validationResult} from "express-validator";
 import Users from "../../models/User.js";
 import gravatar from 'gravatar'
 import jwt from 'jsonwebtoken'
-import config from "config";
 
 const router = express.Router();
 
@@ -28,7 +27,7 @@ router.post('/', [
     try {
         let user = await Users.findOne({ email })
         if (user) {
-            res.status(400).send({ errors: [{ msg: "This email already exist" }] })
+            return res.status(400).send({ errors: [{ msg: "This email already exist" }] })
         }
 
         const avatar = gravatar.url(email, {
@@ -64,8 +63,7 @@ router.post('/', [
             }
         )
     } catch (err) {
-        console.log(err.message)
-        res.status(500).send(err.message)
+        return res.status(500).send(err.message)
     }
 })
 
