@@ -88,11 +88,11 @@ const Navbar = ({ auth: {isAuthenticated, loading}, logout, deleteAccount }) => 
                                                 </Link>
                                             </MenuItem>
                                             <MenuItem
-                                                // eslint-disable-next-line
-                                                onClick={handleClose}
-                                                className={'nav-items'}
-                                                // eslint-disable-next-line
-                                                onClick={logout}>
+                                                onClick={() => {
+                                                    logout()
+                                                    handleClose()
+                                                }}
+                                                className={'nav-items'}>
                                                 Logout <IoLogOutOutline />
                                             </MenuItem>
                                             <MenuItem>
