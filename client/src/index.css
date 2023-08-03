@@ -52,3 +52,8 @@ a {
     font-size: 15px !important;
   }
 }
+
+.pusher {
+  width: 100%;
+  padding: 0.3rem .9rem;
+}

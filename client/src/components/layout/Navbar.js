@@ -74,16 +74,24 @@ const Navbar = ({ auth: {isAuthenticated, loading}, logout, deleteAccount }) => 
                                         </>
                                     ) : (
                                         <>
-                                            <Link to={'/dashboard'} style={{display: 'flex', alignItems: 'center'}}>
-                                                <MenuItem onClick={handleClose} className={'nav-items'}>
-                                                    Dashboard <DiGitBranch size={'1.30rem'} />
-                                                </MenuItem>
-                                            </Link>
-                                            <Link to={'/profiles'} style={{display: 'flex', alignItems: 'center'}}>
-                                                <MenuItem onClick={handleClose} className={'nav-items'}>Developers</MenuItem>
-                                            </Link>
-                                            <MenuItem onClick={handleClose} className={'nav-items'}>
-                                                <Link to={'/posts'} style={{display: 'flex', alignItems: 'center'}}>
+                                            <MenuItem onClick={handleClose} style={{padding: 0}} className={'nav-items'}>
+                                                <Link to={'/dashboard'} className={'pusher'}>
+                                                        Dashboard <DiGitBranch size={'1.30rem'} />
+                                                </Link>
+                                            </MenuItem>
+                                            <MenuItem
+                                                onClick={handleClose}
+                                                style={{padding: 0}}
+                                                className={'nav-items'}>
+                                                <Link to={'/profiles'} className={'pusher'}>
+                                                    Developers
+                                                </Link>
+                                            </MenuItem>
+                                            <MenuItem
+                                                onClick={handleClose}
+                                                style={{padding: 0}}
+                                                className={'nav-items'}>
+                                                <Link to={'/posts'} className={'pusher'}>
                                                     Posts
                                                 </Link>
                                             </MenuItem>
