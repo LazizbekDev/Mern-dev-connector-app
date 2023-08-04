@@ -19,20 +19,25 @@ mongooseConnect().then(r => console.log('it is awesome :-)'))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}));
 
+app.get('/', (req, res) => {
+    res.json({status: 200})
+})
+
 app.use('/api/posts', posts)
 app.use('/api/auth', auth)
 app.use('/api/profile', profile)
 app.use('/api/users', users)
 
-const __dirname = path.resolve()
+// for now i just need api, that's why i commented client path code
+// const __dirname = path.resolve()
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/build'))
-
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-    })
-}
+// if (process.env.NODE_ENV === 'production') {
+//     app.use(express.static('client/build'))
+//
+//     app.get('*', (req, res) => {
+//         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+//     })
+// }
 
 const PORT = process.env.PORT || 5000
 
