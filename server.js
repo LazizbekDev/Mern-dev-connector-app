@@ -5,8 +5,7 @@ import posts from './routes/api/posts.js'
 import auth from './routes/api/auth.js'
 import profile from './routes/api/profile.js'
 import users from './routes/api/users.js'
-// import path from 'path'
-
+import cors from "cors";
 //express ad app
 const app = express()
 config();
@@ -18,6 +17,7 @@ mongooseConnect().then(() => console.log('it is awesome :-)'))
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}));
+app.use(cors())
 
 app.get('/', (req, res) => {
     res.json({status: 200})
