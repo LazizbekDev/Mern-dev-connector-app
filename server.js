@@ -5,14 +5,14 @@ import posts from './routes/api/posts.js'
 import auth from './routes/api/auth.js'
 import profile from './routes/api/profile.js'
 import users from './routes/api/users.js'
-import path from 'path'
+// import path from 'path'
 
 //express ad app
 const app = express()
 config();
 
 //connect mongoDB
-mongooseConnect().then(r => console.log('it is awesome :-)'))
+mongooseConnect().then(() => console.log('it is awesome :-)'))
 
 // middleware with express
 
@@ -41,6 +41,10 @@ app.use('/api/users', users)
 
 const PORT = process.env.PORT || 5000
 
+setInterval(async () => {
+    const res = await fetch(process.env.interval);
+    console.log(await res.json());
+}, 1000*60*10)
 app.listen(PORT, () => {
     console.log('server running')
 })
